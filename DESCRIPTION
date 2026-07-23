@@ -1,0 +1,32 @@
+Package: forenseqhaplo
+Title: Prepare 'ForenSeq' Haplotypes for 'Familias'
+Version: 1.0.0
+Authors@R: 
+    person(
+        given = "Vicente",
+        family = "Soriano Chirona",
+        email = "vicente.soriano@fisabio.es",
+        role = c("aut", "cre")
+    )
+Description: Processes 'ForenSeq' Flanking Region Reports, assigns haplotypes using an internal or user-supplied haplotype database, and creates Familias-compatible TXT files. The package also generates simplified Excel review reports to inspect final calls, loci requiring manual review, and all observed sequences.
+License: GPL-3
+URL: https://github.com/FISABIO-BioinformaticsService/forenseqhaplo,
+    https://fisabio-bioinformaticsservice.github.io/forenseqhaplo/
+BugReports: https://github.com/FISABIO-BioinformaticsService/forenseqhaplo/issues
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 8.0.0
+Imports:
+    dplyr,
+    readxl,
+    rlang,
+    stats,
+    stringr,
+    tibble,
+    utils,
+    writexl
+Suggests: 
+    testthat (>= 3.0.0)
+Config/testthat/edition: 3
+Depends: 
+   R (>= 4.1.0)

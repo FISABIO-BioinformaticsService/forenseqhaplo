@@ -1,0 +1,18 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it using the metadata below."
+title: "forenseqhaplo: Prepare ForenSeq Haplotypes for Familias"
+type: software
+version: 1.0.0
+authors:
+  - family-names: "Soriano Chirona"
+    given-names: "Vicente"
+    email: "vicente.soriano@fisabio.es"
+repository-code: "https://github.com/FISABIO-BioinformaticsService/forenseqhaplo"
+url: "https://fisabio-bioinformaticsservice.github.io/forenseqhaplo/"
+license: GPL-3.0-only
+keywords:
+  - forensic genetics
+  - ForenSeq
+  - haplotypes
+  - iSNP
+  - Familias

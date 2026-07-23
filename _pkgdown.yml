@@ -1,0 +1,32 @@
+url: https://fisabio-bioinformaticsservice.github.io/forenseqhaplo/
+
+template:
+  bootstrap: 5
+
+home:
+  title: forenseqhaplo
+  description: Prepare sequence-based ForenSeq iSNP haplotypes for Familias.
+
+navbar:
+  structure:
+    left: [intro, reference, articles, news]
+    right: [search, github]
+  components:
+    github:
+      icon: fab fa-github
+      href: https://github.com/FISABIO-BioinformaticsService/forenseqhaplo
+
+reference:
+  - title: Main workflows
+    contents:
+      - process_forenseq_sample
+      - process_forenseq_folder
+      - create_consensus_txt
+  - title: Haplotype database
+    contents:
+      - load_haplotype_database
+      - export_haplotype_database
+      - validate_haplotype_database
+  - title: Default parameters
+    contents:
+      - starts_with("default_")
