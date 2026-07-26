@@ -3,7 +3,8 @@ find_forenseq_header_row <- function(path, sheet) {
     path = path,
     sheet = sheet,
     col_names = FALSE,
-    col_types = "text"
+    col_types = "text",
+    .name_repair = "unique_quiet"
   )
 
   for (i in seq_len(nrow(raw))) {
@@ -64,7 +65,8 @@ read_forenseq_sample_id <- function(
     sheet = report_sheet,
     range = "B5",
     col_names = FALSE,
-    col_types = "text"
+    col_types = "text",
+    .name_repair = "unique_quiet"
   )[[1]][1]
 
   value <- clean_text(value)
@@ -102,7 +104,8 @@ read_forenseq_isnp_coverage <- function(
     sheet = report_sheet,
     skip = header_row - 1,
     col_names = TRUE,
-    col_types = "text"
+    col_types = "text",
+    .name_repair = "unique_quiet"
   )
 
   col_locus <- get_column(

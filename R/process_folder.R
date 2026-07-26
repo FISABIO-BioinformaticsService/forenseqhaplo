@@ -132,7 +132,7 @@ create_sample_id_with_suffix <- function(sample_id, sample_counter) {
 #' @param write_log Logical. If `TRUE`, writes `processing_log.tsv`.
 #'   Defaults to `TRUE`.
 #' @param dvi Logical. If `TRUE`, DVI relationship columns are added.
-#' @param dvi_relationships Path to the DVI relationships Excel file.
+#' @param dvi_relationships Path to the DVI relationships Excel file. The file must contain `sample_id`, `relationship`, and `family_id` columns.
 #' @param dvi_sheet Excel sheet for the DVI relationships file.
 #'
 #' @return Invisibly returns a list with the combined TXT tables, processing log and output paths.

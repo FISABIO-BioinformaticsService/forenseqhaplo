@@ -100,7 +100,8 @@ r_string <- function(x) {
 raw_db <- readxl::read_excel(
   path = "data-raw/database.xlsx",
   sheet = "haplotype_database",
-  col_types = "text"
+  col_types = "text",
+  .name_repair = "unique_quiet"
 )
 
 col_target_snp <- get_column(raw_db, c("TargetSNP"))

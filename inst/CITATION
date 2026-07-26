@@ -1,0 +1,17 @@
+## Software citation
+citation(auto = meta)
+
+## Associated scientific paper
+##
+## This is a provisional citation while the manuscript is in preparation.
+## Replace the title, complete author list, journal, year, volume, pages and DOI
+## when the paper is accepted or published.
+bibentry(
+  bibtype = "Unpublished",
+  title = "Nombre del Paper",
+  author = c(
+    person("Sandra", "Carbó Ramírez")
+    ## Add the remaining paper authors here in the definitive order.
+  ),
+  note = "Manuscript in preparation. Provisional title and incomplete author list."
+)

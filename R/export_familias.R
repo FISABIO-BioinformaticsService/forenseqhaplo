@@ -78,7 +78,7 @@ create_familias_row <- function(
     values_with_id <- c(
       sample_id = as.character(dvi_info$sample_id),
       relationship = as.character(dvi_info$relationship),
-      family_unit = as.character(dvi_info$family_unit),
+      family_id = as.character(dvi_info$family_id),
       values
     )
   }
@@ -435,8 +435,8 @@ order_review_columns <- function(df) {
     "Haplotype_2",
     "TargetSNP_allele_1",
     "TargetSNP_allele_2",
-    "Sequence_1",
-    "Sequence_2",
+    "ForenSeq_sequence_1",
+    "ForenSeq_sequence_2",
     "txt_value",
     "txt_target_value",
     "Read_1",
@@ -450,9 +450,7 @@ order_review_columns <- function(df) {
     "final_Haplotype_1",
     "final_Haplotype_2",
     "final_TargetSNP_allele_1",
-    "final_TargetSNP_allele_2",
-    "final_Sequence_1",
-    "final_Sequence_2"
+    "final_TargetSNP_allele_2"
   )
 
   df |>
@@ -473,7 +471,7 @@ order_all_sequences_columns <- function(df) {
     "selected_for_call",
     "selected_copies",
     "sequence_explanation",
-    "Sequence",
+    "ForenSeq_sequence",
     "Read",
     "Detected Bases",
     "Haplotype",

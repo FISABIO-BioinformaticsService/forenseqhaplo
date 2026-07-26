@@ -288,7 +288,7 @@ process_forenseq_sample_core <- function(
 #'   records are written if duplicated `TargetSNP + Sequence` keys are found.
 #'   Mainly useful when using a custom haplotype database.
 #' @param dvi Logical. If `TRUE`, DVI relationship columns are added.
-#' @param dvi_relationships Path to the DVI relationships Excel file.
+#' @param dvi_relationships Path to the DVI relationships Excel file. The file must contain `sample_id`, `relationship`, and `family_id` columns.
 #' @param dvi_sheet Excel sheet for the DVI relationships file.
 #'
 #' @return Invisibly returns a list with processed objects and output paths.

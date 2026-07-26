@@ -21,7 +21,7 @@ reference:
     contents:
       - process_forenseq_sample
       - process_forenseq_folder
-      - create_consensus_txt
+      - combine_reports
   - title: Haplotype database
     contents:
       - load_haplotype_database

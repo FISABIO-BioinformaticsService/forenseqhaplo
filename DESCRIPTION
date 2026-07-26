@@ -1,12 +1,33 @@
 Package: forenseqhaplo
 Title: Prepare 'ForenSeq' Haplotypes for 'Familias'
 Version: 1.0.0
-Authors@R: 
-    person(
-        given = "Vicente",
-        family = "Soriano Chirona",
-        email = "vicente.soriano@fisabio.es",
-        role = c("aut", "cre")
+Authors@R:
+    c(
+        person(
+            given = "Vicente",
+            family = "Soriano Chirona",
+            email = "vicente.soriano@fisabio.es",
+            role = c("aut", "cre"),
+            comment = "Software development, package documentation, repository preparation, and maintenance"
+        ),
+        person(
+            given = "Sandra",
+            family = "Carbó Ramírez",
+            role = "aut",
+            comment = "Scientific research, algorithm development, filter definition, and threshold definition"
+        ),
+        person(
+            given = "Jorge",
+            family = "Ruiz Ramírez",
+            role = "aut",
+            comment = "Scientific research, algorithm development, filter definition, threshold definition, package testing, and validation"
+        ),
+        person(
+            given = "Alan",
+            family = "Codoñer Alejos",
+            role = "aut",
+            comment = "Scientific research, algorithm development, filter definition, and threshold definition"
+        )
     )
 Description: Processes 'ForenSeq' Flanking Region Reports, assigns haplotypes using an internal or user-supplied haplotype database, and creates Familias-compatible TXT files. The package also generates simplified Excel review reports to inspect final calls, loci requiring manual review, and all observed sequences.
 License: GPL-3

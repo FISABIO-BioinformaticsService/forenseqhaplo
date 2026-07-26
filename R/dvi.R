@@ -9,7 +9,8 @@ read_dvi_relationships <- function(
   relationships_raw <- readxl::read_excel(
     path = dvi_relationships,
     sheet = dvi_sheet,
-    col_types = "text"
+    col_types = "text",
+    .name_repair = "unique_quiet"
   )
 
   col_sample_id <- get_column(
@@ -22,15 +23,15 @@ read_dvi_relationships <- function(
     c("relationship", "relation", "relacion", "relaci\u00f3n")
   )
 
-  col_family_unit <- get_column(
+  col_family_id <- get_column(
     relationships_raw,
-    c("family_unit", "family", "unidad_familiar", "unidad familiar")
+    c("family_id")
   )
 
   relationships <- tibble::tibble(
     sample_id = clean_text(relationships_raw[[col_sample_id]]),
     relationship = clean_text(relationships_raw[[col_relationship]]),
-    family_unit = clean_text(relationships_raw[[col_family_unit]])
+    family_id = clean_text(relationships_raw[[col_family_id]])
   )
 
   relationships <- relationships |>
@@ -39,8 +40,8 @@ read_dvi_relationships <- function(
       .data$sample_id != "",
       !is.na(.data$relationship),
       .data$relationship != "",
-      !is.na(.data$family_unit),
-      .data$family_unit != ""
+      !is.na(.data$family_id),
+      .data$family_id != ""
     )
 
   if (nrow(relationships) == 0) {

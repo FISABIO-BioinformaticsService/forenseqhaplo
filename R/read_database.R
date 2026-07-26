@@ -122,7 +122,8 @@ read_haplotype_database <- function(
     raw_db <- readxl::read_excel(
       path = haplotype_db,
       sheet = db_sheet,
-      col_types = "text"
+      col_types = "text",
+      .name_repair = "unique_quiet"
     )
 
     db <- standardize_haplotype_database(raw_db)

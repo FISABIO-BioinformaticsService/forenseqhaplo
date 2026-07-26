@@ -329,6 +329,8 @@ create_familias_outputs <- function(
       final_TargetSNP_allele_2 = .data$TargetSNP_allele_2,
       final_Sequence_1 = .data$Sequence_1,
       final_Sequence_2 = .data$Sequence_2,
+      ForenSeq_sequence_1 = .data$Sequence_1,
+      ForenSeq_sequence_2 = .data$Sequence_2,
 
       Haplotype_1 = .data$report_Haplotype_1,
       Haplotype_2 = .data$report_Haplotype_2,
@@ -340,7 +342,8 @@ create_familias_outputs <- function(
 
   all_sequences <- all_sequences_annotated |>
     dplyr::mutate(
-      TargetSNP = .data[["iSNP Locus"]]
+      TargetSNP = .data[["iSNP Locus"]],
+      ForenSeq_sequence = .data$Sequence
     ) |>
     dplyr::left_join(
       final_calls |>

@@ -1,18 +1,31 @@
 cff-version: 1.2.0
-message: "If you use this software, please cite it using the metadata below."
-title: "forenseqhaplo: Prepare ForenSeq Haplotypes for Familias"
+message: Please cite the exact software version used. Once the associated scientific article is published, please cite both the software and the article.
+title: 'forenseqhaplo: Prepare ForenSeq Haplotypes for Familias'
 type: software
 version: 1.0.0
 authors:
-  - family-names: "Soriano Chirona"
-    given-names: "Vicente"
-    email: "vicente.soriano@fisabio.es"
-repository-code: "https://github.com/FISABIO-BioinformaticsService/forenseqhaplo"
-url: "https://fisabio-bioinformaticsservice.github.io/forenseqhaplo/"
+- family-names: Soriano Chirona
+  given-names: Vicente
+  email: vicente.soriano@fisabio.es
+- family-names: Carbó Ramírez
+  given-names: Sandra
+- family-names: Ruiz Ramírez
+  given-names: Jorge
+- family-names: Codoñer Alejos
+  given-names: Alan
+repository-code: https://github.com/FISABIO-BioinformaticsService/forenseqhaplo
+url: https://fisabio-bioinformaticsservice.github.io/forenseqhaplo/
 license: GPL-3.0-only
 keywords:
-  - forensic genetics
-  - ForenSeq
-  - haplotypes
-  - iSNP
-  - Familias
+- forensic genetics
+- ForenSeq
+- haplotypes
+- iSNP
+- Familias
+references:
+- type: article
+  title: Nombre del Paper
+  authors:
+  - family-names: Carbó Ramírez
+    given-names: Sandra
+  notes: Manuscript in preparation. Provisional title and incomplete author list.

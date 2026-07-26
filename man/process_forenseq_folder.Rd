@@ -86,7 +86,7 @@ Defaults to \code{TRUE}.}
 
 \item{dvi}{Logical. If \code{TRUE}, DVI relationship columns are added.}
 
-\item{dvi_relationships}{Path to the DVI relationships Excel file.}
+\item{dvi_relationships}{Path to the DVI relationships Excel file. The file must contain \code{sample_id}, \code{relationship}, and \code{family_id} columns.}
 
 \item{dvi_sheet}{Excel sheet for the DVI relationships file.}
 }
