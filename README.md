@@ -223,14 +223,14 @@ result$output_parameters_xlsx
 
 ------------------------------------------------------------------------
 
+<!-- Keep summary labels as direct text. Wrapping them in <strong> can place the title below the disclosure arrow in RStudio Help. -->
+
 <details>
 
 <summary>
 
-<strong>6. Input data and accepted columns</strong>
-</summary>
-
-<br>
+6.  Input data and accepted columns
+    </summary>
 
 ### ForenSeq reports
 
@@ -269,10 +269,8 @@ including:
 
 <summary>
 
-<strong>7. Calling algorithm</strong>
-</summary>
-
-<br>
+7.  Calling algorithm
+    </summary>
 
 The algorithm is sequence-based. `Detected Bases` is retained for
 traceability, but the final call is based on the observed `Sequence`
@@ -330,10 +328,8 @@ threshold is accepted.
 
 <summary>
 
-<strong>️8. Thresholds and review parameters</strong>
-</summary>
-
-<br>
+8.  Thresholds and review parameters
+    </summary>
 
 ### Default interpretation parameters
 
@@ -413,10 +409,8 @@ Loci absent from `thresholds_by_locus` use the general
 
 <summary>
 
-<strong>9. Output files in detail</strong>
-</summary>
-
-<br>
+9.  Output files in detail
+    </summary>
 
 ### `haplotypes.txt`
 
@@ -549,10 +543,8 @@ A custom filename can be supplied with `output_target_txt`.
 
 <summary>
 
-<strong>️10. Haplotype database</strong>
-</summary>
-
-<br>
+10. Haplotype database
+    </summary>
 
 The package contains a bundled haplotype database used by default.
 
@@ -613,10 +605,8 @@ result <- process_forenseq_folder(
 
 <summary>
 
-<strong>11. DVI mode</strong>
-</summary>
-
-<br>
+11. DVI mode
+    </summary>
 
 DVI mode adds relationship information to the generated TXT output.
 
@@ -652,10 +642,8 @@ sample_id    relationship    family_id    rs10495407    rs1294331    ...
 
 <summary>
 
-<strong>12. Combining replicate reports</strong>
-</summary>
-
-<br>
+12. Combining replicate reports
+    </summary>
 
 `combine_reports()` combines multiple review Excel files produced by
 `forenseqhaplo` and creates a consensus haplotype TXT.
@@ -683,10 +671,8 @@ consensus$consensus_txt
 
 <summary>
 
-<strong>13. Population frequency files for Familias</strong>
-</summary>
-
-<br>
+13. Population frequency files for Familias
+    </summary>
 
 Population frequency tables intended for direct use in Familias should
 be stored in:
