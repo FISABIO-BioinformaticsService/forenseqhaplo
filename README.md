@@ -1,4 +1,5 @@
-<!-- Generated from README.Rmd. Edit README.Rmd and rebuild README.md. -->
+
+<!-- README.md is generated from README.Rmd. Please edit README.Rmd, not README.md. -->
 
 <div align="center">
 
@@ -6,7 +7,8 @@
 
 ### Sequence-based interpretation of ForenSeq iSNP flanking-region haplotypes
 
-**ForenSeq UAS reports → sequence selection → haplotype assignment → Familias outputs**
+**ForenSeq UAS reports → sequence selection → haplotype assignment →
+Familias outputs**
 
 <br>
 
@@ -15,50 +17,61 @@
 [![R-CMD-check](https://github.com/FISABIO-BioinformaticsService/forenseqhaplo/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/FISABIO-BioinformaticsService/forenseqhaplo/actions/workflows/R-CMD-check.yaml)
 ![R](https://img.shields.io/badge/R-%E2%89%A5%204.1.0-276DC3?logo=r&logoColor=white)
 ![Version](https://img.shields.io/badge/version-1.0.0-2ea44f)
-[![License: GPL-3.0](https://img.shields.io/badge/license-GPL--3.0-blue.svg)](LICENSE.md)
+[![License:
+GPL-3.0](https://img.shields.io/badge/license-GPL--3.0-blue.svg)](LICENSE.md)
 ![Status](https://img.shields.io/badge/status-private%20review-f0ad4e)
 
 <!-- badges: end -->
 
 <br>
 
-[Overview](#-overview) ·
-[Installation](#-installation) ·
-[Quick start](#-quick-start) ·
-[Workflow](#-workflow) ·
-[Functions](#-main-functions) ·
-[Documentation](#-documentation) ·
+[Overview](#-overview) · [Installation](#-installation) · [Quick
+start](#-quick-start) · [Workflow](#-workflow) ·
+[Functions](#-main-functions) · [Documentation](#-documentation) ·
 [Citation](#-citation)
 
 </div>
 
----
+------------------------------------------------------------------------
 
-## 🔎 Overview
+## 1. Overview
 
-`forenseqhaplo` is an R package for processing **ForenSeq Flanking Region Reports** and generating output files for downstream forensic genetic analyses with **Familias**.
+`forenseqhaplo` is an R package for processing **ForenSeq Flanking
+Region Reports** and generating output files for downstream forensic
+genetic analyses with **Familias**.
 
-The package is designed for sequence-based interpretation of iSNP flanking-region haplotypes. It reads one or more ForenSeq UAS Excel reports, selects the relevant observed sequences for each locus, matches them against a haplotype database, and writes reviewable outputs for manual inspection and downstream analysis.
+The package is designed for sequence-based interpretation of iSNP
+flanking-region haplotypes. It reads one or more ForenSeq UAS Excel
+reports, selects the relevant observed sequences for each locus, matches
+them against a haplotype database, and writes reviewable outputs for
+manual inspection and downstream analysis.
 
 <table>
+
 <tr>
+
 <td align="center" width="25%">
-<strong>📥 Input</strong><br>
-ForenSeq UAS <code>.xlsx</code> reports
+
+<strong>Input</strong><br> ForenSeq UAS <code>.xlsx</code> reports
 </td>
+
 <td align="center" width="25%">
-<strong>⚙️ Interpretation</strong><br>
-Read depth and allele-balance rules
+
+<strong>Interpretation</strong><br> Read depth and allele-balance rules
 </td>
+
 <td align="center" width="25%">
-<strong>🧬 Assignment</strong><br>
-Sequence-based haplotype matching
+
+<strong>Assignment</strong><br> Sequence-based haplotype matching
 </td>
+
 <td align="center" width="25%">
-<strong>📤 Output</strong><br>
-Familias TXT, review Excel and logs
+
+<strong>Output</strong><br> Familias TXT, review Excel and logs
 </td>
+
 </tr>
+
 </table>
 
 ### Key capabilities
@@ -72,12 +85,15 @@ Familias TXT, review Excel and logs
 - Combine replicate review reports.
 - Distribute population-frequency resources for Familias.
 
-> [!IMPORTANT]
-> `forenseqhaplo` is a data-processing and review-support tool. It does **not** replace laboratory validation, expert interpretation, or local quality procedures. Users are responsible for validating thresholds, reviewing flagged loci, and approving final results.
+> \[!IMPORTANT\] `forenseqhaplo` is a data-processing and review-support
+> tool. It does **not** replace laboratory validation, expert
+> interpretation, or local quality procedures. Users are responsible for
+> validating thresholds, reviewing flagged loci, and approving final
+> results.
 
-## 🔄 Workflow
+## 2. Workflow
 
-```mermaid
+``` mermaid
 flowchart LR
     A["ForenSeq report<br/>(.xlsx)"] --> B["Read sample ID and<br/>iSNP Coverage table"]
     B --> C["Order observed sequences<br/>by read count"]
@@ -93,20 +109,20 @@ flowchart LR
 ### Main outputs
 
 | Output | Description |
-|:--|:--|
+|:---|:---|
 | `haplotypes.txt` | Familias-compatible haplotype table with one row per sample |
 | `review_<sample_id>.xlsx` | Final calls, review cases, and all observed sequences |
 | `processing_log.tsv` | Processing status and summary statistics for folder analyses |
 | `parameters.xlsx` | Processing parameters used in the run |
 | `target.txt` | Optional TargetSNP allele TXT file |
 
-## 📦 Installation
+## 3. Installation
 
 ### Install from GitHub
 
 After the repository is available on GitHub, install the package with:
 
-```r
+``` r
 install.packages("remotes")
 
 remotes::install_github(
@@ -118,7 +134,7 @@ remotes::install_github(
 
 To install a tagged release, for example `v1.0.0`:
 
-```r
+``` r
 remotes::install_github(
   "FISABIO-BioinformaticsService/forenseqhaplo",
   ref = "v1.0.0",
@@ -129,9 +145,10 @@ remotes::install_github(
 
 ### Install from a local source package
 
-If you have a local source package such as `forenseqhaplo_1.0.0.tar.gz`, install it with:
+If you have a local source package such as `forenseqhaplo_1.0.0.tar.gz`,
+install it with:
 
-```r
+``` r
 install.packages("remotes")
 
 remotes::install_local(
@@ -141,21 +158,27 @@ remotes::install_local(
 )
 ```
 
-This is the recommended installation method when distributing the package as a local file, because missing dependencies are installed automatically from CRAN when internet access is available.
+This is the recommended installation method when distributing the
+package as a local file, because missing dependencies are installed
+automatically from CRAN when internet access is available.
 
-A small installer script can also be distributed together with the `.tar.gz` file. Place both files in the same folder and run the script from R:
+A small installer script can also be distributed together with the
+`.tar.gz` file. Place both files in the same folder and run the script
+from R:
 
-```r
+``` r
 source("install_forenseqhaplo.R")
 ```
 
-The installer script should search for `forenseqhaplo_*.tar.gz`, install `remotes` if needed, and call `remotes::install_local(..., dependencies = TRUE)`.
+The installer script should search for `forenseqhaplo_*.tar.gz`, install
+`remotes` if needed, and call
+`remotes::install_local(..., dependencies = TRUE)`.
 
-## 🚀 Quick start
+## 4. Quick start
 
 Process all valid ForenSeq reports in a folder:
 
-```r
+``` r
 library(forenseqhaplo)
 
 result <- process_forenseq_folder(
@@ -166,7 +189,7 @@ result <- process_forenseq_folder(
 
 This creates a folder like:
 
-```text
+``` text
 results/
 ├── haplotypes.txt
 ├── parameters.xlsx
@@ -178,7 +201,7 @@ results/
 
 The returned object contains the main processed tables and output paths:
 
-```r
+``` r
 result$familias_txt
 result$processing_log
 result$processing_parameters
@@ -186,10 +209,10 @@ result$output_txt
 result$output_parameters_xlsx
 ```
 
-## 🧰 Main functions
+## 5. Main functions
 
 | Function | Purpose |
-| -------- | ------- |
+|----|----|
 | `process_forenseq_folder()` | Process all ForenSeq reports in a folder and create combined outputs |
 | `process_forenseq_sample()` | Process a single ForenSeq report |
 | `combine_reports()` | Combine replicate review Excel files into a consensus haplotype TXT |
@@ -198,85 +221,124 @@ result$output_parameters_xlsx
 | `validate_haplotype_database()` | Validate a bundled or user-provided haplotype database |
 | `default_*()` functions | Inspect default loci, thresholds, and review parameters |
 
----
+------------------------------------------------------------------------
 
 <details>
-<summary><strong>📥 Input data and accepted columns</strong></summary>
+
+<summary>
+
+<strong>6. Input data and accepted columns</strong>
+</summary>
 
 <br>
 
 ### ForenSeq reports
 
-The default input is the `iSNP Coverage` sheet from a ForenSeq Flanking Region Report.
+The default input is the `iSNP Coverage` sheet from a ForenSeq Flanking
+Region Report.
 
 The package expects:
 
 | Information | Accepted column names |
-| ----------- | --------------------- |
+|----|----|
 | Locus | `iSNP Locus`, `iSNP & Variant Reference SNP`, or `iSNP and Variant Reference SNP` |
 | Detected base | `Detected Bases` or `Detected Base` |
 | Read count | `Read`, `Reads`, or `Read Count` |
 | Sequence | `Sequence` |
 
-The sample identifier is read from cell `B5`. If the sample identifier is missing during folder processing, the input filename is used as fallback.
+The sample identifier is read from cell `B5`. If the sample identifier
+is missing during folder processing, the input filename is used as
+fallback.
 
 ### Input folder behaviour
 
-`process_forenseq_folder()` processes `.xlsx` files in `input_dir` and ignores files that are likely to be previous outputs or temporary files, including:
+`process_forenseq_folder()` processes `.xlsx` files in `input_dir` and
+ignores files that are likely to be previous outputs or temporary files,
+including:
 
-* Excel temporary files beginning with `~$`.
-* Per-sample review files.
-* `parameters.xlsx`.
-* `processing_log.tsv`.
-* Haplotype and target TXT files.
-* Duplicate-database reports.
+- Excel temporary files beginning with `~$`.
+- Per-sample review files.
+- `parameters.xlsx`.
+- `processing_log.tsv`.
+- Haplotype and target TXT files.
+- Duplicate-database reports.
 
 </details>
 
 <details>
-<summary><strong>🧠 Calling algorithm</strong></summary>
+
+<summary>
+
+<strong>7. Calling algorithm</strong>
+</summary>
 
 <br>
 
-The algorithm is sequence-based. `Detected Bases` is retained for traceability, but the final call is based on the observed `Sequence` values.
+The algorithm is sequence-based. `Detected Bases` is retained for
+traceability, but the final call is based on the observed `Sequence`
+values.
 
 For each expected `TargetSNP`:
 
-1. Observed sequences are ordered by decreasing read count.
-2. If the locus is absent from the ForenSeq report, it is reported as `no_call` and excluded from the TXT.
-3. If only one sequence is observed and its read count is at least `min_homozygote_reads`, the sequence is duplicated as a homozygous call.
-4. If two or more sequences are observed, the allele balance is calculated as:
+1.  Observed sequences are ordered by decreasing read count.
 
-   ```text
-   read count of sequence 2 / read count of sequence 1
-   ```
+2.  If the locus is absent from the ForenSeq report, it is reported as
+    `no_call` and excluded from the TXT.
 
-5. The two most abundant sequences are accepted as a heterozygous call when both conditions are met:
+3.  If only one sequence is observed and its read count is at least
+    `min_homozygote_reads`, the sequence is duplicated as a homozygous
+    call.
 
-   ```text
-   allele_balance >= threshold_used
-   read_2 >= min_heterozygous_reads
-   ```
+4.  If two or more sequences are observed, the allele balance is
+    calculated as:
 
-6. If the allele balance is below the threshold but the primary sequence has enough reads, the primary sequence is duplicated as a homozygous call and the locus is flagged for review.
-7. Calls with insufficient read support are marked as `not_interpretable`.
-8. A relevant third sequence is flagged for review when its third-to-first read ratio reaches `extra_signal_threshold`.
-9. Selected final sequences are matched against the haplotype database using the effective key `TargetSNP + Sequence`.
-10. If one or both selected sequences are not found in the database, the locus is marked as `not_found`, excluded from the TXT, and reported in the review sheet.
+    ``` text
+    read count of sequence 2 / read count of sequence 1
+    ```
 
-All threshold comparisons are inclusive. A value exactly equal to its threshold is accepted.
+5.  The two most abundant sequences are accepted as a heterozygous call
+    when both conditions are met:
+
+    ``` text
+    allele_balance >= threshold_used
+    read_2 >= min_heterozygous_reads
+    ```
+
+6.  If the allele balance is below the threshold but the primary
+    sequence has enough reads, the primary sequence is duplicated as a
+    homozygous call and the locus is flagged for review.
+
+7.  Calls with insufficient read support are marked as
+    `not_interpretable`.
+
+8.  A relevant third sequence is flagged for review when its
+    third-to-first read ratio reaches `extra_signal_threshold`.
+
+9.  Selected final sequences are matched against the haplotype database
+    using the effective key `TargetSNP + Sequence`.
+
+10. If one or both selected sequences are not found in the database, the
+    locus is marked as `not_found`, excluded from the TXT, and reported
+    in the review sheet.
+
+All threshold comparisons are inclusive. A value exactly equal to its
+threshold is accepted.
 
 </details>
 
 <details>
-<summary><strong>🎚️ Thresholds and review parameters</strong></summary>
+
+<summary>
+
+<strong>️8. Thresholds and review parameters</strong>
+</summary>
 
 <br>
 
 ### Default interpretation parameters
 
 | Parameter | Default | Meaning |
-| --------- | ------: | ------- |
+|----|---:|----|
 | `heterozygote_threshold` | 0.30 | General minimum allele balance required to accept the second sequence |
 | `min_homozygote_reads` | 30 | Minimum reads required to duplicate a single sequence as a homozygous call |
 | `min_heterozygous_reads` | 11 | Minimum reads required for the second sequence in a heterozygous call |
@@ -287,16 +349,16 @@ All threshold comparisons are inclusive. A value exactly equal to its threshold 
 
 Some loci use lower default allele-balance thresholds:
 
-| Threshold | Loci |
-| --------: | ---- |
-| 0.10 | `rs729172`, `rs10776839`, `rs1335873` |
-| 0.20 | `rs338882`, `rs1493232`, `rs6955448` |
+| Threshold | Loci                                  |
+|----------:|---------------------------------------|
+|      0.10 | `rs729172`, `rs10776839`, `rs1335873` |
+|      0.20 | `rs338882`, `rs1493232`, `rs6955448`  |
 
 All other loci use the general `heterozygote_threshold`.
 
 Inspect the default values in R:
 
-```r
+``` r
 default_heterozygote_threshold()
 default_thresholds_by_locus()
 default_min_homozygote_reads()
@@ -309,9 +371,10 @@ default_review_low_homozygote_multiplier()
 
 ### Customising thresholds
 
-All main thresholds can be changed when processing a folder or a single sample:
+All main thresholds can be changed when processing a folder or a single
+sample:
 
-```r
+``` r
 result <- process_forenseq_folder(
   input_dir = "path/to/forenseq_reports",
   output_dir = "path/to/results",
@@ -325,9 +388,10 @@ result <- process_forenseq_folder(
 )
 ```
 
-Custom locus-specific thresholds can be supplied as a named numeric vector:
+Custom locus-specific thresholds can be supplied as a named numeric
+vector:
 
-```r
+``` r
 custom_thresholds <- c(
   rs729172 = 0.12,
   rs338882 = 0.22
@@ -340,22 +404,28 @@ result <- process_forenseq_folder(
 )
 ```
 
-Loci absent from `thresholds_by_locus` use the general `heterozygote_threshold`.
+Loci absent from `thresholds_by_locus` use the general
+`heterozygote_threshold`.
 
 </details>
 
 <details>
-<summary><strong>📤 Output files in detail</strong></summary>
+
+<summary>
+
+<strong>9. Output files in detail</strong>
+</summary>
 
 <br>
 
 ### `haplotypes.txt`
 
-This is the main Familias-compatible output. It is a wide tab-separated file with one row per sample and one column per locus.
+This is the main Familias-compatible output. It is a wide tab-separated
+file with one row per sample and one column per locus.
 
 Each populated locus contains two comma-separated haplotypes:
 
-```text
+``` text
 sample_id    rs10495407    rs1294331    ...
 Sample_001   H1,H1         H2,H3         ...
 ```
@@ -366,44 +436,49 @@ Loci without an accepted and database-matched call are left empty.
 
 Each sample generates one workbook named:
 
-```text
+``` text
 review_<sample_id>.xlsx
 ```
 
 The workbook contains three sheets:
 
 | Sheet | Purpose |
-| ----- | ------- |
+|----|----|
 | `Final_calls` | Clean summary of the final automatic interpretation for each locus |
 | `Review` | Only loci or calls requiring manual review |
 | `All_sequences` | All observed sequences from the original ForenSeq report |
 
-`Final_calls` is intentionally kept compact. Long sequence strings are not included there.
+`Final_calls` is intentionally kept compact. Long sequence strings are
+not included there.
 
-`Review` includes the original ForenSeq sequences for loci requiring review:
+`Review` includes the original ForenSeq sequences for loci requiring
+review:
 
-```text
+``` text
 ForenSeq_sequence_1
 ForenSeq_sequence_2
 ```
 
-This is especially useful when a selected sequence is not found in the haplotype database.
+This is especially useful when a selected sequence is not found in the
+haplotype database.
 
 `All_sequences` contains the original observed sequence as:
 
-```text
+``` text
 ForenSeq_sequence
 ```
 
-Analytical parameters are not repeated in per-sample review workbooks. They are recorded separately in `parameters.xlsx`.
+Analytical parameters are not repeated in per-sample review workbooks.
+They are recorded separately in `parameters.xlsx`.
 
 ### `parameters.xlsx`
 
-This workbook records the parameters used during processing. It is generated by default and supports traceability and reproducibility.
+This workbook records the parameters used during processing. It is
+generated by default and supports traceability and reproducibility.
 
 Disable parameter export with:
 
-```r
+``` r
 process_forenseq_folder(
   input_dir = "path/to/forenseq_reports",
   output_dir = "path/to/results",
@@ -413,7 +488,7 @@ process_forenseq_folder(
 
 Use a custom filename with `output_parameters_xlsx`:
 
-```r
+``` r
 process_forenseq_folder(
   input_dir = "path/to/forenseq_reports",
   output_dir = "path/to/results",
@@ -423,19 +498,22 @@ process_forenseq_folder(
 
 ### `processing_log.tsv`
 
-Folder processing generates a tab-separated log with the processing status of each file. It includes:
+Folder processing generates a tab-separated log with the processing
+status of each file. It includes:
 
-* Input filename.
-* Original and final sample identifiers.
-* Processing status.
-* Error messages, when present.
-* Number of final calls.
-* Number of homozygous, heterozygous, no-call, not-interpretable, and not-found loci.
-* Number of records requiring review.
+- Input filename.
+- Original and final sample identifiers.
+- Processing status.
+- Error messages, when present.
+- Number of final calls.
+- Number of homozygous, heterozygous, no-call, not-interpretable, and
+  not-found loci.
+- Number of records requiring review.
 
-By default, an error in one sample does not stop processing of the remaining files. To stop at the first error:
+By default, an error in one sample does not stop processing of the
+remaining files. To stop at the first error:
 
-```r
+``` r
 process_forenseq_folder(
   input_dir = "path/to/forenseq_reports",
   output_dir = "path/to/results",
@@ -449,7 +527,7 @@ By default, only `haplotypes.txt` is created.
 
 To also export the corresponding TargetSNP alleles, use:
 
-```r
+``` r
 result <- process_forenseq_folder(
   input_dir = "path/to/forenseq_reports",
   output_dir = "path/to/results",
@@ -459,7 +537,7 @@ result <- process_forenseq_folder(
 
 This creates:
 
-```text
+``` text
 target.txt
 ```
 
@@ -468,7 +546,11 @@ A custom filename can be supplied with `output_target_txt`.
 </details>
 
 <details>
-<summary><strong>🗃️ Haplotype database</strong></summary>
+
+<summary>
+
+<strong>️10. Haplotype database</strong>
+</summary>
 
 <br>
 
@@ -476,7 +558,7 @@ The package contains a bundled haplotype database used by default.
 
 Load it in R:
 
-```r
+``` r
 haplotype_db <- load_haplotype_database()
 
 head(haplotype_db)
@@ -485,7 +567,7 @@ dim(haplotype_db)
 
 Export it to Excel:
 
-```r
+``` r
 export_haplotype_database(
   output_path = "haplotype_database.xlsx",
   overwrite = TRUE
@@ -494,20 +576,22 @@ export_haplotype_database(
 
 A custom database must contain these columns:
 
-| Column | Description |
-| ------ | ----------- |
-| `TargetSNP` | Target iSNP identifier |
-| `TargetSNP_allele` | Allele at the target SNP |
-| `Haplotype` | Haplotype identifier used in the TXT output |
-| `Sequence` | Flanking-region sequence |
+| Column              | Description                                        |
+|---------------------|----------------------------------------------------|
+| `TargetSNP`         | Target iSNP identifier                             |
+| `TargetSNP_allele`  | Allele at the target SNP                           |
+| `Haplotype`         | Haplotype identifier used in the TXT output        |
+| `Sequence`          | Flanking-region sequence                           |
 | `Polymorphic_sites` | Polymorphic positions represented by the haplotype |
-| `Position_GRCh38` | Genomic position according to GRCh38 |
+| `Position_GRCh38`   | Genomic position according to GRCh38               |
 
-The effective matching key is `TargetSNP + normalized Sequence`. Duplicated keys are not allowed because they make sequence matching ambiguous.
+The effective matching key is `TargetSNP + normalized Sequence`.
+Duplicated keys are not allowed because they make sequence matching
+ambiguous.
 
 Validate a custom database before processing:
 
-```r
+``` r
 validate_haplotype_database(
   haplotype_db = "path/to/custom_haplotype_database.xlsx"
 )
@@ -515,7 +599,7 @@ validate_haplotype_database(
 
 Use the custom database in an analysis:
 
-```r
+``` r
 result <- process_forenseq_folder(
   input_dir = "path/to/forenseq_reports",
   output_dir = "path/to/results",
@@ -526,23 +610,28 @@ result <- process_forenseq_folder(
 </details>
 
 <details>
-<summary><strong>👥 DVI mode</strong></summary>
+
+<summary>
+
+<strong>11. DVI mode</strong>
+</summary>
 
 <br>
 
 DVI mode adds relationship information to the generated TXT output.
 
-The relationships Excel file must contain exactly one row per sample and these columns:
+The relationships Excel file must contain exactly one row per sample and
+these columns:
 
-| Column | Description |
-| ------ | ----------- |
-| `sample_id` | Sample identifier matching the final TXT sample ID |
-| `relationship` | Relationship category |
-| `family_id` | Family or DVI identifier |
+| Column         | Description                                        |
+|----------------|----------------------------------------------------|
+| `sample_id`    | Sample identifier matching the final TXT sample ID |
+| `relationship` | Relationship category                              |
+| `family_id`    | Family or DVI identifier                           |
 
 Example:
 
-```r
+``` r
 result <- process_forenseq_folder(
   input_dir = "path/to/forenseq_reports",
   output_dir = "path/to/results",
@@ -553,22 +642,27 @@ result <- process_forenseq_folder(
 
 In DVI mode, the TXT starts with:
 
-```text
+``` text
 sample_id    relationship    family_id    rs10495407    rs1294331    ...
 ```
 
 </details>
 
 <details>
-<summary><strong>🔁 Combining replicate reports</strong></summary>
+
+<summary>
+
+<strong>12. Combining replicate reports</strong>
+</summary>
 
 <br>
 
-`combine_reports()` combines multiple review Excel files produced by `forenseqhaplo` and creates a consensus haplotype TXT.
+`combine_reports()` combines multiple review Excel files produced by
+`forenseqhaplo` and creates a consensus haplotype TXT.
 
 Example:
 
-```r
+``` r
 consensus <- combine_reports(
   reports_dir = "path/to/replicate_review_files",
   output_txt = "consensus_haplotypes.txt"
@@ -577,7 +671,7 @@ consensus <- combine_reports(
 
 Inspect potential conflicts and missing loci:
 
-```r
+``` r
 consensus$conflicts
 consensus$missing_loci
 consensus$consensus_txt
@@ -586,19 +680,26 @@ consensus$consensus_txt
 </details>
 
 <details>
-<summary><strong>🌍 Population frequency files for Familias</strong></summary>
+
+<summary>
+
+<strong>13. Population frequency files for Familias</strong>
+</summary>
 
 <br>
 
-Population frequency tables intended for direct use in Familias should be stored in:
+Population frequency tables intended for direct use in Familias should
+be stored in:
 
-```text
+``` text
 inst/population_frequencies/
 ```
 
-This location is used because the files are external resources distributed with the package, rather than R data objects. After installation, locate them with:
+This location is used because the files are external resources
+distributed with the package, rather than R data objects. After
+installation, locate them with:
 
-```r
+``` r
 frequency_dir <- system.file(
   "population_frequencies",
   package = "forenseqhaplo",
@@ -608,9 +709,10 @@ frequency_dir <- system.file(
 list.files(frequency_dir, full.names = TRUE)
 ```
 
-Copy one of the files to a working directory before importing it into Familias:
+Copy one of the files to a working directory before importing it into
+Familias:
 
-```r
+``` r
 file.copy(
   from = file.path(frequency_dir, "FILENAME.txt"),
   to = "FILENAME.txt",
@@ -618,62 +720,66 @@ file.copy(
 )
 ```
 
-Each distributed frequency file must have documented provenance: population, geographic scope, marker panel, sample size, estimation method, source citation or DOI, version, licence, and Familias import format. The files must contain population-level reference data only and must not contain individual genotypes or confidential case information.
+Each distributed frequency file must have documented provenance:
+population, geographic scope, marker panel, sample size, estimation
+method, source citation or DOI, version, licence, and Familias import
+format. The files must contain population-level reference data only and
+must not contain individual genotypes or confidential case information.
 
 </details>
 
----
+------------------------------------------------------------------------
 
-## ✅ Reproducibility and review
+## 14. Reproducibility and review
 
 For each analysis, keep at least:
 
-* The `forenseqhaplo` version.
-* The haplotype database used.
-* The generated `parameters.xlsx` file.
-* The generated `processing_log.tsv` file.
-* The ForenSeq UAS version used to create the reports.
-* The processing date.
-* Any manual review or correction applied after automatic processing.
+- The `forenseqhaplo` version.
+- The haplotype database used.
+- The generated `parameters.xlsx` file.
+- The generated `processing_log.tsv` file.
+- The ForenSeq UAS version used to create the reports.
+- The processing date.
+- Any manual review or correction applied after automatic processing.
 
 Get the installed package version with:
 
-```r
+``` r
 packageVersion("forenseqhaplo")
 ```
 
-## 📚 Documentation
+## 15. Documentation
 
 After publication, the package website will be available at:
 
-```text
+``` text
 https://fisabio-bioinformaticsservice.github.io/forenseqhaplo/
 ```
 
 Function help pages are also available from R:
 
-```r
+``` r
 ?process_forenseq_folder
 ?process_forenseq_sample
 ?combine_reports
 ?validate_haplotype_database
 ```
 
-## 📝 Citation
+## 16. Citation
 
-The software and the associated scientific paper are related but distinct
-research outputs.
+The software and the associated scientific paper are related but
+distinct research outputs.
 
 ### Software authors
 
-- **Vicente Soriano Chirona** — software development, package documentation,
-  repository preparation, and maintenance.
-- **Sandra Carbó Ramírez** — scientific research, algorithm development, and
-  definition of filters and thresholds.
+- **Vicente Soriano Chirona** — software development, package
+  documentation, repository preparation, and maintenance.
+- **Sandra Carbó Ramírez** — scientific research, algorithm development,
+  and definition of filters and thresholds.
 - **Jorge Ruiz Ramírez** — scientific research, algorithm development,
   definition of filters and thresholds, package testing, and validation.
-- **Alan Codoñer Alejos** — scientific research, algorithm development, and
-  definition of filters and thresholds.
+- **Alan Codoñer Alejos** — scientific research, algorithm development,
+  and definition of filters and thresholds.
 
 ### Associated scientific paper
 
@@ -681,24 +787,25 @@ The provisional title of the associated manuscript is:
 
 > **Nombre del Paper**
 
-**Sandra Carbó Ramírez** is the principal author. The manuscript is currently
-in preparation, so its complete author list, journal, year, volume, pages and
-DOI are not yet final.
+**Sandra Carbó Ramírez** is the principal author. The manuscript is
+currently in preparation, so its complete author list, journal, year,
+volume, pages and DOI are not yet final.
 
-To display both the software citation and the provisional paper citation:
+To display both the software citation and the provisional paper
+citation:
 
-```r
+``` r
 citation("forenseqhaplo")
 ```
 
-Once the article is accepted or published, the provisional record will be
-replaced by the definitive bibliographic reference. Users will then be asked to
-cite both:
+Once the article is accepted or published, the provisional record will
+be replaced by the definitive bibliographic reference. Users will then
+be asked to cite both:
 
-1. The exact `forenseqhaplo` software version used.
-2. The associated scientific article.
+1.  The exact `forenseqhaplo` software version used.
+2.  The associated scientific article.
 
----
+------------------------------------------------------------------------
 
 <div align="center">
 
