@@ -35,19 +35,19 @@ knitr::opts_chunk$set(
 
 <br>
 
-[Overview](#-overview) ·
-[Installation](#-installation) ·
-[Quick start](#-quick-start) ·
-[Workflow](#-workflow) ·
-[Functions](#-main-functions) ·
-[Documentation](#-documentation) ·
-[Citation](#-citation)
+[Overview](#1-overview) ·
+[Workflow](#2-workflow) ·
+[Installation](#3-installation) ·
+[Quick start](#4-quick-start) ·
+[Functions](#5-main-functions) ·
+[Documentation](#15-documentation) ·
+[Citation](#16-citation)
 
 </div>
 
 ---
 
-## 🔎 Overview
+## 1. Overview
 
 `forenseqhaplo` is an R package for processing **ForenSeq Flanking Region Reports** and generating output files for downstream forensic genetic analyses with **Familias**.
 
@@ -88,7 +88,7 @@ Familias TXT, review Excel and logs
 > [!IMPORTANT]
 > `forenseqhaplo` is a data-processing and review-support tool. It does **not** replace laboratory validation, expert interpretation, or local quality procedures. Users are responsible for validating thresholds, reviewing flagged loci, and approving final results.
 
-## 🔄 Workflow
+## 2. Workflow
 
 ```mermaid
 flowchart LR
@@ -113,7 +113,7 @@ flowchart LR
 | `parameters.xlsx` | Processing parameters used in the run |
 | `target.txt` | Optional TargetSNP allele TXT file |
 
-## 📦 Installation
+## 3. Installation
 
 ### Install from GitHub
 
@@ -164,7 +164,7 @@ source("install_forenseqhaplo.R")
 
 The installer script should search for `forenseqhaplo_*.tar.gz`, install `remotes` if needed, and call `remotes::install_local(..., dependencies = TRUE)`.
 
-## 🚀 Quick start
+## 4. Quick start
 
 Process all valid ForenSeq reports in a folder:
 
@@ -199,7 +199,7 @@ result$output_txt
 result$output_parameters_xlsx
 ```
 
-## 🧰 Main functions
+## 5. Main functions
 
 | Function | Purpose |
 | -------- | ------- |
@@ -213,10 +213,7 @@ result$output_parameters_xlsx
 
 ---
 
-```{=html}
-<details>
-<summary><strong>📥 Input data and accepted columns</strong></summary>
-```
+## 6. Input data and accepted columns
 
 ### ForenSeq reports
 
@@ -244,15 +241,7 @@ The sample identifier is read from cell `B5`. If the sample identifier is missin
 * Haplotype and target TXT files.
 * Duplicate-database reports.
 
-
-```{=html}
-</details>
-```
-
-```{=html}
-<details>
-<summary><strong>🧠 Calling algorithm</strong></summary>
-```
+## 7. Calling algorithm
 
 The algorithm is sequence-based. `Detected Bases` is retained for traceability, but the final call is based on the observed `Sequence` values.
 
@@ -282,15 +271,7 @@ For each expected `TargetSNP`:
 
 All threshold comparisons are inclusive. A value exactly equal to its threshold is accepted.
 
-
-```{=html}
-</details>
-```
-
-```{=html}
-<details>
-<summary><strong>🎚️ Thresholds and review parameters</strong></summary>
-```
+## 8. Thresholds and review parameters
 
 ### Default interpretation parameters
 
@@ -361,14 +342,9 @@ result <- process_forenseq_folder(
 
 Loci absent from `thresholds_by_locus` use the general `heterozygote_threshold`.
 
-
-```{=html}
-</details>
-```
-
 ```{=html}
 <details>
-<summary><strong>📤 Output files in detail</strong></summary>
+<summary><strong>9. Output files in detail</strong></summary>
 ```
 
 ### `haplotypes.txt`
@@ -494,7 +470,7 @@ A custom filename can be supplied with `output_target_txt`.
 
 ```{=html}
 <details>
-<summary><strong>🗃️ Haplotype database</strong></summary>
+<summary><strong>10. Haplotype database</strong></summary>
 ```
 
 The package contains a bundled haplotype database used by default.
@@ -555,7 +531,7 @@ result <- process_forenseq_folder(
 
 ```{=html}
 <details>
-<summary><strong>👥 DVI mode</strong></summary>
+<summary><strong>11. DVI mode</strong></summary>
 ```
 
 DVI mode adds relationship information to the generated TXT output.
@@ -592,7 +568,7 @@ sample_id    relationship    family_id    rs10495407    rs1294331    ...
 
 ```{=html}
 <details>
-<summary><strong>🔁 Combining replicate reports</strong></summary>
+<summary><strong>12. Combining replicate reports</strong></summary>
 ```
 
 `combine_reports()` combines multiple review Excel files produced by `forenseqhaplo` and creates a consensus haplotype TXT.
@@ -621,16 +597,37 @@ consensus$consensus_txt
 
 ```{=html}
 <details>
-<summary><strong>🌍 Population frequency files for Familias</strong></summary>
+<summary><strong>13. Population frequency files for Familias</strong></summary>
 ```
 
-Population frequency tables intended for direct use in Familias should be stored in:
+Population frequency files distributed with the package are installed under:
 
 ```text
 inst/population_frequencies/
 ```
 
-This location is used because the files are external resources distributed with the package, rather than R data objects. After installation, locate them with:
+The current package includes seven Familias-formatted text files. Six contain
+sequence-based haplotype frequencies and one contains TargetSNP allele
+frequencies. Every file contains 94 loci.
+
+| File | Population label | Frequency type | Loci |
+| --- | --- | --- | ---: |
+| `Frequencies_AFR_haplotypes.txt` | `AFR` | Flanking-region haplotypes | 94 |
+| `Frequencies_AMR_haplotypes.txt` | `AMR` | Flanking-region haplotypes | 94 |
+| `Frequencies_EAS_haplotypes.txt` | `EAS` | Flanking-region haplotypes | 94 |
+| `Frequencies_EIP_haplotypes.txt` | `EIP` | Flanking-region haplotypes | 94 |
+| `Frequencies_EIP_SNPs.txt` | `EIP` | TargetSNP alleles | 94 |
+| `Frequencies_EUR_haplotypes.txt` | `EUR` | Flanking-region haplotypes | 94 |
+| `Frequencies_SAS_haplotypes.txt` | `SAS` | Flanking-region haplotypes | 94 |
+
+The files use a plain-text structure compatible with Familias:
+
+- the locus identifier appears on its own line;
+- each allele or haplotype and its frequency are separated by a tab;
+- frequencies use a comma as the decimal separator;
+- loci are separated by a blank line.
+
+After installation, locate all distributed frequency files with:
 
 ```{r population-frequency-files, eval = FALSE}
 frequency_dir <- system.file(
@@ -639,21 +636,42 @@ frequency_dir <- system.file(
   mustWork = TRUE
 )
 
-list.files(frequency_dir, full.names = TRUE)
+frequency_files <- list.files(
+  frequency_dir,
+  pattern = "^Frequencies_.*\\.txt$",
+  full.names = TRUE
+)
+
+basename(frequency_files)
 ```
 
-Copy one of the files to a working directory before importing it into Familias:
+Copy a selected file to the current working directory before importing it into
+Familias:
 
 ```{r copy-population-frequency-file, eval = FALSE}
+selected_file <- file.path(
+  frequency_dir,
+  "Frequencies_EUR_haplotypes.txt"
+)
+
 file.copy(
-  from = file.path(frequency_dir, "FILENAME.txt"),
-  to = "FILENAME.txt",
+  from = selected_file,
+  to = basename(selected_file),
   overwrite = FALSE
 )
 ```
 
-Each distributed frequency file must have documented provenance: population, geographic scope, marker panel, sample size, estimation method, source citation or DOI, version, licence, and Familias import format. The files must contain population-level reference data only and must not contain individual genotypes or confidential case information.
+The package distributes these resources but does not automatically select the
+appropriate population or frequency type for an analysis. That decision must be
+based on the validated analytical method, the study design, and the relevant
+population model.
 
+Before a public release, the meaning and provenance of every population label,
+including `EIP`, should be documented with its geographic scope, sample size,
+frequency-estimation method, source publication or dataset, DOI or stable URL,
+version, licence, preparation date, and Familias validation information. The
+files must contain population-level reference data only and must not contain
+individual genotypes, sample identifiers, or confidential case information.
 
 ```{=html}
 </details>
@@ -661,7 +679,7 @@ Each distributed frequency file must have documented provenance: population, geo
 
 ---
 
-## ✅ Reproducibility and review
+## 14. Reproducibility and review
 
 For each analysis, keep at least:
 
@@ -679,7 +697,7 @@ Get the installed package version with:
 packageVersion("forenseqhaplo")
 ```
 
-## 📚 Documentation
+## 15. Documentation
 
 After publication, the package website will be available at:
 
@@ -696,7 +714,7 @@ Function help pages are also available from R:
 ?validate_haplotype_database
 ```
 
-## 📝 Citation
+## 16. Citation
 
 The software and the associated scientific paper are related but distinct
 research outputs.
