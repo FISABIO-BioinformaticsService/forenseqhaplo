@@ -34,7 +34,7 @@ start](#-quick-start) · [Workflow](#-workflow) ·
 
 ------------------------------------------------------------------------
 
-## 1. Overview
+## 🔎 Overview
 
 `forenseqhaplo` is an R package for processing **ForenSeq Flanking
 Region Reports** and generating output files for downstream forensic
@@ -52,22 +52,23 @@ manual inspection and downstream analysis.
 
 <td align="center" width="25%">
 
-<strong>Input</strong><br> ForenSeq UAS <code>.xlsx</code> reports
+<strong>📥 Input</strong><br> ForenSeq UAS <code>.xlsx</code> reports
 </td>
 
 <td align="center" width="25%">
 
-<strong>Interpretation</strong><br> Read depth and allele-balance rules
+<strong>⚙️ Interpretation</strong><br> Read depth and allele-balance
+rules
 </td>
 
 <td align="center" width="25%">
 
-<strong>Assignment</strong><br> Sequence-based haplotype matching
+<strong>🧬 Assignment</strong><br> Sequence-based haplotype matching
 </td>
 
 <td align="center" width="25%">
 
-<strong>Output</strong><br> Familias TXT, review Excel and logs
+<strong>📤 Output</strong><br> Familias TXT, review Excel and logs
 </td>
 
 </tr>
@@ -91,7 +92,7 @@ manual inspection and downstream analysis.
 > validating thresholds, reviewing flagged loci, and approving final
 > results.
 
-## 2. Workflow
+## 🔄 Workflow
 
 ``` mermaid
 flowchart LR
@@ -116,7 +117,7 @@ flowchart LR
 | `parameters.xlsx` | Processing parameters used in the run |
 | `target.txt` | Optional TargetSNP allele TXT file |
 
-## 3. Installation
+## 📦 Installation
 
 ### Install from GitHub
 
@@ -174,7 +175,7 @@ The installer script should search for `forenseqhaplo_*.tar.gz`, install
 `remotes` if needed, and call
 `remotes::install_local(..., dependencies = TRUE)`.
 
-## 4. Quick start
+## 🚀 Quick start
 
 Process all valid ForenSeq reports in a folder:
 
@@ -209,7 +210,7 @@ result$output_txt
 result$output_parameters_xlsx
 ```
 
-## 5. Main functions
+## 🧰 Main functions
 
 | Function | Purpose |
 |----|----|
@@ -223,14 +224,14 @@ result$output_parameters_xlsx
 
 ------------------------------------------------------------------------
 
-<!-- Keep summary labels as direct text. Wrapping them in <strong> can place the title below the disclosure arrow in RStudio Help. -->
-
 <details>
 
 <summary>
 
-6.  Input data and accepted columns
-    </summary>
+<strong>📥 Input data and accepted columns</strong>
+</summary>
+
+<br>
 
 ### ForenSeq reports
 
@@ -269,8 +270,10 @@ including:
 
 <summary>
 
-7.  Calling algorithm
-    </summary>
+<strong>🧠 Calling algorithm</strong>
+</summary>
+
+<br>
 
 The algorithm is sequence-based. `Detected Bases` is retained for
 traceability, but the final call is based on the observed `Sequence`
@@ -328,8 +331,10 @@ threshold is accepted.
 
 <summary>
 
-8.  Thresholds and review parameters
-    </summary>
+<strong>🎚️ Thresholds and review parameters</strong>
+</summary>
+
+<br>
 
 ### Default interpretation parameters
 
@@ -409,8 +414,10 @@ Loci absent from `thresholds_by_locus` use the general
 
 <summary>
 
-9.  Output files in detail
-    </summary>
+<strong>📤 Output files in detail</strong>
+</summary>
+
+<br>
 
 ### `haplotypes.txt`
 
@@ -543,8 +550,10 @@ A custom filename can be supplied with `output_target_txt`.
 
 <summary>
 
-10. Haplotype database
-    </summary>
+<strong>🗃️ Haplotype database</strong>
+</summary>
+
+<br>
 
 The package contains a bundled haplotype database used by default.
 
@@ -605,8 +614,10 @@ result <- process_forenseq_folder(
 
 <summary>
 
-11. DVI mode
-    </summary>
+<strong>👥 DVI mode</strong>
+</summary>
+
+<br>
 
 DVI mode adds relationship information to the generated TXT output.
 
@@ -642,8 +653,10 @@ sample_id    relationship    family_id    rs10495407    rs1294331    ...
 
 <summary>
 
-12. Combining replicate reports
-    </summary>
+<strong>🔁 Combining replicate reports</strong>
+</summary>
+
+<br>
 
 `combine_reports()` combines multiple review Excel files produced by
 `forenseqhaplo` and creates a consensus haplotype TXT.
@@ -671,8 +684,10 @@ consensus$consensus_txt
 
 <summary>
 
-13. Population frequency files for Familias
-    </summary>
+<strong>🌍 Population frequency files for Familias</strong>
+</summary>
+
+<br>
 
 Population frequency tables intended for direct use in Familias should
 be stored in:
@@ -716,7 +731,7 @@ must not contain individual genotypes or confidential case information.
 
 ------------------------------------------------------------------------
 
-## 14. Reproducibility and review
+## ✅ Reproducibility and review
 
 For each analysis, keep at least:
 
@@ -734,7 +749,7 @@ Get the installed package version with:
 packageVersion("forenseqhaplo")
 ```
 
-## 15. Documentation
+## 📚 Documentation
 
 After publication, the package website will be available at:
 
@@ -751,7 +766,7 @@ Function help pages are also available from R:
 ?validate_haplotype_database
 ```
 
-## 16. Citation
+## 📝 Citation
 
 The software and the associated scientific paper are related but
 distinct research outputs.
