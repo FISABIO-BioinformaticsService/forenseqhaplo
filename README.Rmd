@@ -213,10 +213,10 @@ result$output_parameters_xlsx
 
 ---
 
+```{=html}
 <details>
 <summary><strong>📥 Input data and accepted columns</strong></summary>
-
-<br>
+```
 
 ### ForenSeq reports
 
@@ -244,12 +244,15 @@ The sample identifier is read from cell `B5`. If the sample identifier is missin
 * Haplotype and target TXT files.
 * Duplicate-database reports.
 
-</details>
 
+```{=html}
+</details>
+```
+
+```{=html}
 <details>
 <summary><strong>🧠 Calling algorithm</strong></summary>
-
-<br>
+```
 
 The algorithm is sequence-based. `Detected Bases` is retained for traceability, but the final call is based on the observed `Sequence` values.
 
@@ -279,12 +282,15 @@ For each expected `TargetSNP`:
 
 All threshold comparisons are inclusive. A value exactly equal to its threshold is accepted.
 
-</details>
 
+```{=html}
+</details>
+```
+
+```{=html}
 <details>
 <summary><strong>🎚️ Thresholds and review parameters</strong></summary>
-
-<br>
+```
 
 ### Default interpretation parameters
 
@@ -355,12 +361,15 @@ result <- process_forenseq_folder(
 
 Loci absent from `thresholds_by_locus` use the general `heterozygote_threshold`.
 
-</details>
 
+```{=html}
+</details>
+```
+
+```{=html}
 <details>
 <summary><strong>📤 Output files in detail</strong></summary>
-
-<br>
+```
 
 ### `haplotypes.txt`
 
@@ -478,12 +487,15 @@ target.txt
 
 A custom filename can be supplied with `output_target_txt`.
 
-</details>
 
+```{=html}
+</details>
+```
+
+```{=html}
 <details>
 <summary><strong>🗃️ Haplotype database</strong></summary>
-
-<br>
+```
 
 The package contains a bundled haplotype database used by default.
 
@@ -536,12 +548,15 @@ result <- process_forenseq_folder(
 )
 ```
 
-</details>
 
+```{=html}
+</details>
+```
+
+```{=html}
 <details>
 <summary><strong>👥 DVI mode</strong></summary>
-
-<br>
+```
 
 DVI mode adds relationship information to the generated TXT output.
 
@@ -570,12 +585,15 @@ In DVI mode, the TXT starts with:
 sample_id    relationship    family_id    rs10495407    rs1294331    ...
 ```
 
-</details>
 
+```{=html}
+</details>
+```
+
+```{=html}
 <details>
 <summary><strong>🔁 Combining replicate reports</strong></summary>
-
-<br>
+```
 
 `combine_reports()` combines multiple review Excel files produced by `forenseqhaplo` and creates a consensus haplotype TXT.
 
@@ -596,12 +614,15 @@ consensus$missing_loci
 consensus$consensus_txt
 ```
 
-</details>
 
+```{=html}
+</details>
+```
+
+```{=html}
 <details>
 <summary><strong>🌍 Population frequency files for Familias</strong></summary>
-
-<br>
+```
 
 Population frequency tables intended for direct use in Familias should be stored in:
 
@@ -633,7 +654,10 @@ file.copy(
 
 Each distributed frequency file must have documented provenance: population, geographic scope, marker panel, sample size, estimation method, source citation or DOI, version, licence, and Familias import format. The files must contain population-level reference data only and must not contain individual genotypes or confidential case information.
 
+
+```{=html}
 </details>
+```
 
 ---
 
