@@ -53,7 +53,7 @@ inspection.
 
 <td align="center" width="25%">
 
-<strong>📥 Input</strong><br> ForenSeq UAS <code>.xlsx</code> reports
+<strong>📥 Input</strong><br> ForenSeq UAS (<code>.xlsx</code>) reports
 </td>
 
 <td align="center" width="25%">
@@ -69,7 +69,8 @@ rules
 
 <td align="center" width="25%">
 
-<strong>📤 Output</strong><br> Familias TXT, review Excel and logs
+<strong>📤 Output</strong><br> Familias (<code>.txt</code>), review
+Excel and logs
 </td>
 
 </tr>
