@@ -318,21 +318,21 @@ threshold is accepted.
 ### Default interpretation parameters
 
 | Parameter | Default | Meaning |
-|----|---:|----|
+|----|:--:|----|
 | `heterozygote_threshold` | 0.30 | General minimum allele balance required to accept the second sequence |
 | `min_homozygote_reads` | 30 | Minimum reads required to duplicate a single sequence as a homozygous call |
 | `min_heterozygous_reads` | 11 | Minimum reads required for the second sequence in a heterozygous call |
 | `extra_signal_threshold` | 0.25 | Minimum third-to-first ratio used to flag relevant extra signal |
-| `review_balance_lower_margin` | 0.15 | Lower proportional margin used to flag calls close to the allele-balance threshold = review_balance_lower_margin \* (1 - review_balance_lower_margin) |
-| `review_balance_upper_margin` | 0.15 | Upper proportional margin used to flag calls close to the allele-balance threshold review_balance_upper_margin \* (1 + review_balance_upper_margin) |
+| `review_balance_lower_margin` | 0.15 | Lower proportional margin (LPM) used to flag calls close to the allele-balance threshold.<br><span style="display: block; text-align: center; white-space: nowrap;">LPM \* (1 - LPM)</span> |
+| `review_balance_upper_margin` | 0.15 | Upper proportional margin (UPM) used to flag calls close to the allele-balance threshold.<br><span style="display: block; text-align: center; white-space: nowrap;">UPM \* (1 + UPM)</span> |
 | `review_low_homozygote_multiplier` | 1.50 | Multiplier used to flag accepted homozygous calls close to the minimum read threshold |
 
 Some loci use lower default allele-balance thresholds:
 
 | Threshold | Loci                                  |
-|----------:|---------------------------------------|
-|      0.10 | `rs729172`, `rs10776839`, `rs1335873` |
-|      0.20 | `rs338882`, `rs1493232`, `rs6955448`  |
+|:---------:|---------------------------------------|
+|   0.10    | `rs729172`, `rs10776839`, `rs1335873` |
+|   0.20    | `rs338882`, `rs1493232`, `rs6955448`  |
 
 All other loci use the general `heterozygote_threshold`.
 
@@ -647,13 +647,13 @@ The current package includes seven Familias-formatted text files. Six
 contain sequence-based haplotype frequencies and one contains TargetSNP
 allele frequencies. Every file contains 94 loci.
 
-| File | Population label | Frequency type | Loci |
-|----|----|----|---:|
+| File | Population label | Sequence-based haplotypes | Loci |
+|----|:--:|----|:--:|
 | `Frequencies_AFR_haplotypes.txt` | `AFR` | Flanking-region haplotypes | 94 |
 | `Frequencies_AMR_haplotypes.txt` | `AMR` | Flanking-region haplotypes | 94 |
 | `Frequencies_EAS_haplotypes.txt` | `EAS` | Flanking-region haplotypes | 94 |
 | `Frequencies_EIP_haplotypes.txt` | `EIP` | Flanking-region haplotypes | 94 |
-| `Frequencies_EIP_SNPs.txt` | `EIP` | TargetSNP alleles | 94 |
+| `Frequencies_EIP_SNPs.txt` | `EIP` | Target SNP alleles | 94 |
 | `Frequencies_EUR_haplotypes.txt` | `EUR` | Flanking-region haplotypes | 94 |
 | `Frequencies_SAS_haplotypes.txt` | `SAS` | Flanking-region haplotypes | 94 |
 
