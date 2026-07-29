@@ -33,6 +33,9 @@ knitr::opts_chunk$set(
 
 <!-- badges: end -->
 
+> [!NOTE]
+> REVISIÓN: recordad actualizar el badge "status: private review" al publicar el repositorio. Además, la navegación superior no enlaza a las secciones 9–13 (Output files, Haplotype database, DVI mode, Combining replicate reports, Population frequency files) — con los encabezados ya corregidos, podría ampliarse el índice para incluirlas.
+
 <br>
 
 [Overview](#1-overview) ·
@@ -272,6 +275,44 @@ For each expected `TargetSNP`:
 
 All threshold comparisons are inclusive. A value exactly equal to its threshold is accepted.
 
+### Calling decision tree (per TargetSNP)
+
+```mermaid
+flowchart TD
+    A["Locus expected"] --> B{"Locus present in<br/>FRR report?"}
+    B -- "No" --> B1["no_call<br/>(excluded from TXT)"]
+    B -- "Yes" --> C["Order observed sequences<br/>by decreasing read count"]
+    C --> D{"How many distinct<br/>sequences observed?"}
+    D -- "1" --> E{"read_1 >= <br/>min_homozygote_reads?"}
+    E -- "Yes" --> F["Duplicate as<br/>homozygous call"]
+    E -- "No" --> G["not_interpretable"]
+    D -- ">= 2" --> H["allele_balance =<br/>read_2 / read_1"]
+    H --> I{"allele_balance >= threshold_used<br/>AND read_2 >= min_heterozygous_reads?"}
+    I -- "Yes" --> J["Heterozygous call<br/>(seq_1, seq_2)"]
+    I -- "No" --> K{"read_1 >= <br/>min_homozygote_reads?"}
+    K -- "Yes" --> L["Duplicate seq_1 as homozygous<br/>+ flag for review"]
+    K -- "No" --> G
+    J --> M{"3rd sequence ratio<br/>>= extra_signal_threshold?"}
+    M -- "Yes" --> N["Flag: relevant<br/>extra signal"]
+    M -- "No" --> O["No extra-signal flag"]
+    F --> P["Match selected sequence(s)<br/>against haplotype DB<br/>(TargetSNP + Sequence)"]
+    L --> P
+    N --> P
+    O --> P
+    P --> Q{"Both alleles found<br/>in database?"}
+    Q -- "Yes" --> R["Final call written<br/>to haplotypes.txt"]
+    Q -- "No" --> S["not_found<br/>(excluded from TXT,<br/>reported in Review sheet)"]
+```
+
+> [!WARNING]
+> REVISIÓN — puntos no explícitos en el texto que este diagrama deja visibles y que conviene documentar formalmente:
+>
+> - Qué ocurre si `allele_balance >= threshold_used` pero `read_2 < min_heterozygous_reads` (aquí se asume que cae por la rama "No" del nodo de decisión, igual que un allele_balance insuficiente).
+> - Criterio de desempate cuando `read_1 == read_2`.
+> - Definición exacta de "normalización" de `Sequence` usada en la clave de match (mayúsculas/minúsculas, orientación de hebra, tratamiento de bases N/IUPAC ambiguas) — se menciona en la sección 10 pero no aquí, donde realmente se aplica.
+> - Tratamiento de una 4ª secuencia o posteriores (¿se ignoran sin más?).
+> - Ausencia de un umbral de profundidad total mínima por locus, previo al cálculo del allele balance.
+
 ## 8. Thresholds and review parameters
 
 ### Default interpretation parameters
@@ -294,6 +335,9 @@ Some loci use lower default allele-balance thresholds:
 | 0.20 | `rs338882`, `rs1493232`, `rs6955448` |
 
 All other loci use the general `heterozygote_threshold`.
+
+> [!NOTE]
+> REVISIÓN: no se indica de dónde proceden estos umbrales específicos por locus (0.10 / 0.20). Si derivan del estudio de validación del manuscrito asociado, sería recomendable referenciarlo explícitamente aquí, reforzando la trazabilidad científica de los parámetros por defecto.
 
 Inspect the default values in R:
 
@@ -345,8 +389,11 @@ Loci absent from `thresholds_by_locus` use the general `heterozygote_threshold`.
 
 ```{=html}
 <details>
-<summary><strong>9. Output files in detail</strong></summary>
+<summary><h2 id="id_9-output-files-in-detail" style="display:inline">9. Output files in detail</h2></summary>
 ```
+
+> [!NOTE]
+> REVISIÓN: esta sección y las secciones 10–13 estaban envueltas en `<details><summary><strong>...</strong></summary>` en lugar de un encabezado real. Esto las excluía del índice/outline automático de GitHub y les impedía tener un ancla estable para enlazar directamente. Se ha sustituido `<strong>` por un `<h2>` con `id`, manteniendo el comportamiento plegable.
 
 ### `haplotypes.txt`
 
@@ -471,7 +518,7 @@ A custom filename can be supplied with `output_target_txt`.
 
 ```{=html}
 <details>
-<summary><strong>10. Haplotype database</strong></summary>
+<summary><h2 id="id_10-haplotype-database" style="display:inline">10. Haplotype database</h2></summary>
 ```
 
 The package contains a bundled haplotype database used by default.
@@ -532,8 +579,11 @@ result <- process_forenseq_folder(
 
 ```{=html}
 <details>
-<summary><strong>11. DVI mode</strong></summary>
+<summary><h2 id="id_11-dvi-mode" style="display:inline">11. DVI mode</h2></summary>
 ```
+
+> [!WARNING]
+> REVISIÓN: la columna `relationship` no define un vocabulario controlado (valores aceptados, ej. "father", "mother", "missing_person"...). Sin una lista cerrada y validada, distintos usuarios pueden introducir etiquetas distintas para el mismo parentesco, lo que rompería el análisis en Familias/DVI-Familias de forma silenciosa.
 
 DVI mode adds relationship information to the generated TXT output.
 
@@ -569,8 +619,11 @@ sample_id    relationship    family_id    rs10495407    rs1294331    ...
 
 ```{=html}
 <details>
-<summary><strong>12. Combining replicate reports</strong></summary>
+<summary><h2 id="id_12-combining-replicate-reports" style="display:inline">12. Combining replicate reports</h2></summary>
 ```
+
+> [!NOTE]
+> REVISIÓN: `combine_reports()` expone `$conflicts` pero no se explica la regla de resolución (¿mayoría, requiere unanimidad, se marca siempre para revisión manual?). Documentar esta regla evita ambigüedad al interpretar `consensus_txt` en casos con réplicas discordantes.
 
 `combine_reports()` combines multiple review Excel files produced by `forenseqhaplo` and creates a consensus haplotype TXT.
 
@@ -598,7 +651,7 @@ consensus$consensus_txt
 
 ```{=html}
 <details>
-<summary><strong>13. Population frequency files for Familias</strong></summary>
+<summary><h2 id="id_13-population-frequency-files-for-familias" style="display:inline">13. Population frequency files for Familias</h2></summary>
 ```
 
 Population frequency files distributed with the package are installed under:
@@ -692,6 +745,9 @@ For each analysis, keep at least:
 * The processing date.
 * Any manual review or correction applied after automatic processing.
 
+> [!TIP]
+> SUGERENCIA: para reforzar la trazabilidad en un contexto forense (casos de Memoria Democrática), considerad añadir a esta lista: (1) un checksum/hash (ej. SHA-256) de la base de datos de haplotipos usada — el nombre de archivo no garantiza que el contenido no haya cambiado entre análisis—, y (2) la salida completa de `sessionInfo()` (versión de R, SO y versiones de dependencias), no solo la versión de `forenseqhaplo`.
+
 Get the installed package version with:
 
 ```r
@@ -736,6 +792,9 @@ research outputs.
 The provisional title of the associated manuscript is:
 
 > **Nombre del Paper**
+
+> [!CAUTION]
+> REVISIÓN: "Nombre del Paper" es un placeholder pendiente de sustituir por el título real antes de hacer público el repositorio — fácil de pasar por alto en la revisión final.
 
 **Sandra Carbó Ramírez** is the principal author. The manuscript is currently
 in preparation, so its complete author list, journal, year, volume, pages and
