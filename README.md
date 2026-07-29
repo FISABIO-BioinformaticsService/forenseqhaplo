@@ -27,7 +27,7 @@ GPL-3.0](https://img.shields.io/badge/license-GPL--3.0-blue.svg)](LICENSE.md)
 
 [Overview](#1-overview) · [Workflow](#2-workflow) ·
 [Installation](#3-installation) · [Quick start](#4-quick-start) ·
-[Functions](#5-main-functions) · [Documentation](#15-documentation) ·
+[Functions](#5-main-functions) · [Help](#15-help-and-function-reference) ·
 [Citation](#16-citation)
 
 </div>
@@ -314,6 +314,34 @@ For each expected `TargetSNP`:
 All threshold comparisons are inclusive. A value exactly equal to its
 threshold is accepted.
 
+### Calling decision flow
+
+```mermaid
+flowchart LR
+    A{"Locus present<br/>in the FRR?"}
+
+    A -- "No" --> B["no_call<br/>Exclude from TXT"]
+    A -- "Yes" --> C{"Observed<br/>sequences"}
+
+    C -- "1" --> D{"read_1 >=<br/>min_homozygote_reads?"}
+    D -- "No" --> E["not_interpretable"]
+    D -- "Yes" --> F["Homozygous call<br/>seq_1, seq_1"]
+
+    C -- ">= 2" --> G{"Allele balance and<br/>read_2 pass?"}
+    G -- "Yes" --> H["Heterozygous call<br/>seq_1, seq_2"]
+    G -- "No" --> I{"read_1 >=<br/>min_homozygote_reads?"}
+    I -- "No" --> E
+    I -- "Yes" --> J["Homozygous call<br/>seq_1, seq_1<br/>Flag for review"]
+
+    F --> K["Check third-sequence signal<br/>and add review flag if required"]
+    H --> K
+    J --> K
+
+    K --> L{"Selected sequences<br/>found in database?"}
+    L -- "Yes" --> M["Final call written<br/>to haplotypes.txt"]
+    L -- "No" --> N["not_found<br/>Exclude from TXT<br/>Report in Review"]
+```
+
 ## 8. Thresholds and review parameters
 
 ### Default interpretation parameters
@@ -388,8 +416,7 @@ result <- process_forenseq_folder(
 Loci absent from `thresholds_by_locus` use the general
 `heterozygote_threshold`.
 
-<details>
-<summary><strong>9. Output files in detail</strong></summary>
+## 9. Output files in detail
 
 ### `haplotypes.txt`
 
@@ -516,10 +543,7 @@ target.txt
 
 A custom filename can be supplied with `output_target_txt`.
 
-</details>
-
-<details>
-<summary><strong>10. Haplotype database</strong></summary>
+## 10. Haplotype database
 
 The package contains a bundled haplotype database used by default.
 
@@ -574,10 +598,7 @@ result <- process_forenseq_folder(
 )
 ```
 
-</details>
-
-<details>
-<summary><strong>11. DVI mode</strong></summary>
+## 11. DVI mode
 
 DVI mode adds relationship information to the generated TXT output.
 
@@ -607,10 +628,7 @@ In DVI mode, the TXT starts with:
 sample_id    relationship    family_id    rs10495407    rs1294331    ...
 ```
 
-</details>
-
-<details>
-<summary><strong>12. Combining replicate reports</strong></summary>
+## 12. Combining replicate reports
 
 `combine_reports()` combines multiple review Excel files produced by
 `forenseqhaplo` and creates a consensus haplotype TXT.
@@ -632,10 +650,7 @@ consensus$missing_loci
 consensus$consensus_txt
 ```
 
-</details>
-
-<details>
-<summary><strong>13. Population frequency files for Familias</strong></summary>
+## 13. Population frequency files for Familias
 
 Population frequency files distributed with the package are installed
 under:
@@ -712,8 +727,6 @@ validation information. The files must contain population-level
 reference data only and must not contain individual genotypes, sample
 identifiers, or confidential case information.
 
-</details>
-
 ------------------------------------------------------------------------
 
 ## 14. Reproducibility and review
@@ -734,17 +747,17 @@ Get the installed package version with:
 packageVersion("forenseqhaplo")
 ```
 
-## 15. Documentation
+## 15. Help and function reference
 
-After publication, the package website will be available at:
+This README provides the main user guide for `forenseqhaplo`, including
+installation, input requirements, calling rules, outputs, and advanced
+workflows.
 
-``` text
-https://fisabio-bioinformaticsservice.github.io/forenseqhaplo/
-```
-
-Function help pages are also available from R:
+Documentation for individual functions is available directly from R:
 
 ``` r
+help(package = "forenseqhaplo")
+
 ?process_forenseq_folder
 ?process_forenseq_sample
 ?combine_reports
