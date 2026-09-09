@@ -707,22 +707,7 @@ research outputs.
 
 > **Nombre del Paper**
 
-**Sandra Carbó Ramírez** is the principal author. The manuscript is currently
-in preparation, so its complete author list, journal, year, volume, pages and
-DOI are not yet final.
-
-To display both the software citation and the provisional paper citation:
-
-```r
-citation("forenseqhaplo")
-```
-
-Once the article is accepted or published, the provisional record will be
-replaced by the definitive bibliographic reference. Users will then be asked to
-cite both:
-
-1. The exact `forenseqhaplo` software version used.
-2. The associated scientific article.
+**Sandra Carbó Ramírez** is the principal author.
 
 ---
 
