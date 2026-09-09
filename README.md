@@ -751,7 +751,9 @@ distinct research outputs.
 
 ### Associated scientific paper
 
-> **Nombre del Paper**
+> **Expanding the forensic utility of the 94 Forenseq identity SNPs
+> through sequence-based microhaplotypes and an automated analysis
+> workflow**
 
 **Sandra Carbó Ramírez** is the principal author.
 
