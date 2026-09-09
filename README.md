@@ -285,7 +285,6 @@ including:
 - `parameters.xlsx`.
 - `processing_log.tsv`.
 - Haplotype and target TXT files.
-- Duplicate-database reports.
 
 ## 7. Calling algorithm
 
@@ -363,7 +362,7 @@ alt="Calling decision flow" />
 | `extra_signal_threshold` | 0.25 | Minimum third-to-first ratio used to flag relevant extra signal |
 | `review_balance_lower_margin` | 0.15 | Lower proportional margin (LPM) used to flag calls close to the allele-balance threshold.<br><span style="display: block; text-align: center; white-space: nowrap;">heterozygote_threshold \* (1 - LPM)</span> |
 | `review_balance_upper_margin` | 0.15 | Upper proportional margin (UPM) used to flag calls close to the allele-balance threshold.<br><span style="display: block; text-align: center; white-space: nowrap;">heterozygote_threshold \* (1 + UPM)</span> |
-| `review_low_homozygote_multiplier` | 1.50 | Multiplier used to flag accepted homozygous calls close to the minimum read threshold |
+| `review_low_homozygote_multiplier` | 1.50 | Accepted homozygous calls below `min_homozygote_reads * review_low_homozygote_multiplier` are flagged for review. |
 
 Some loci use lower default allele-balance thresholds:
 
@@ -463,8 +462,8 @@ not included there.
 review:
 
 ``` text
-ForenSeq_sequence
-DB_sequence
+ForenSeq_sequence: Sequences from FRRs. 
+DB_sequence: Sequences stored in the package's internal database.
 ```
 
 This is especially useful when a selected sequence is not found in the
@@ -771,8 +770,6 @@ distinct research outputs.
   definition of filters and thresholds, package testing, and validation.
 
 ### Associated scientific paper
-
-The provisional title of the associated manuscript is:
 
 > **Nombre del Paper**
 
