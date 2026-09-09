@@ -90,10 +90,10 @@ Excel and logs
 - Include population-frequency resources for Familias analyses.
 
 > \[NOTE\] `forenseqhaplo` is a data-processing and review-support tool.
-> It does **not** replace laboratory validation, expert interpretation,
-> or local quality procedures. Users are responsible for validating
-> analysis parameters, reviewing flagged loci, and approving final
-> genotype and haplotype calls.
+> It does **not** replace laboratory validation or expert
+> interpretation. Users are responsible for validating analysis
+> parameters, reviewing flagged loci, and approving final genotype and
+> haplotype calls.
 
 ## 2. Workflow
 
