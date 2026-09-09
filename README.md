@@ -340,9 +340,9 @@ exported to `haplotypes.txt`, and flag cases that require manual review.
 | `min_homozygote_reads` | 30 | Minimum reads required to duplicate a single sequence as a homozygous call |
 | `min_heterozygous_reads` | 11 | Minimum reads required for the second sequence in a heterozygous call |
 | `extra_signal_threshold` | 0.25 | Minimum third-to-first ratio used to flag relevant extra signal |
-| `review_balance_lower_margin` | 0.15 | Lower proportional margin (LPM) used to flag calls close to the allele-balance threshold.<br><span style="display: block; text-align: center; white-space: nowrap;">heterozygote_threshold \* (1 - LPM)</span> |
-| `review_balance_upper_margin` | 0.15 | Upper proportional margin (UPM) used to flag calls close to the allele-balance threshold.<br><span style="display: block; text-align: center; white-space: nowrap;">heterozygote_threshold \* (1 + UPM)</span> |
-| `review_low_homozygote_multiplier` | 1.50 | Accepted homozygous calls below `min_homozygote_reads * review_low_homozygote_multiplier` are flagged for review. |
+| `review_balance_lower_margin` | 0.15 | Lower proportional margin (LPM) used to flag calls close to the allele-balance threshold.<br><span style="display: block; text-align: center; white-space: nowrap;">`heterozygote_threshold * (1 - LPM)`</span> |
+| `review_balance_upper_margin` | 0.15 | Upper proportional margin (UPM) used to flag calls close to the allele-balance threshold.<br><span style="display: block; text-align: center; white-space: nowrap;">`heterozygote_threshold * (1 + UPM)`</span> |
+| `review_low_homozygote_multiplier` | 1.50 | Accepted homozygous calls below are flagged for review. <br><span style="display: block; text-align: center; white-space: nowrap;">`min_homozygote_reads * review_low_homozygote_multiplier`</span> |
 
 Some loci use lower default allele-balance thresholds:
 
