@@ -5,7 +5,7 @@
 
 # 🧬 forenseqhaplo
 
-### Sequence-based characterization of ForenSeq iiSNP Flanking Region Reports
+### Sequence-based haplotype characterization from ForenSeq iiSNP Flanking Region Reports
 
 **ForenSeq UAS v2.7 reports → sequence selection → haplotype assignment
 → Familias.txt**
@@ -189,22 +189,6 @@ remotes::install_local(
 )
 ```
 
-This is the recommended local installation method when the package is
-distributed as a GitHub ZIP archive, because missing dependencies are
-installed automatically from CRAN when internet access is available.
-
-A small installer script can also be distributed together with the
-downloaded ZIP file. Place both files in the same folder and run the
-script from R:
-
-``` r
-source("install_forenseqhaplo.R")
-```
-
-The installer script should search for a local `forenseqhaplo*.zip`
-archive, install `remotes` if needed, and call
-`remotes::install_local(..., dependencies = TRUE)`.
-
 ## 4. Quick start
 
 Process all valid ForenSeq reports in a folder:
@@ -344,11 +328,7 @@ The following diagram summarizes the decision logic used by
 `forenseqhaplo` to classify each locus, decide whether it can be
 exported to `haplotypes.txt`, and flag cases that require manual review.
 
-<figure>
-<img src="man/figures/calling_decision_flow.png"
-alt="Calling decision flow" />
-<figcaption aria-hidden="true">Calling decision flow</figcaption>
-</figure>
+![](man/figures/calling_decision_flow.png)
 
 ## 8. Thresholds and review parameters
 
