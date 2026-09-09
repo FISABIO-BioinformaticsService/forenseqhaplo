@@ -286,7 +286,7 @@ For each expected `Target SNP`:
 
 All threshold comparisons are inclusive. A value exactly equal to its threshold is accepted.
 
-### Calling decision flow
+### Algorithm diagram
 
 The following diagram summarizes the decision logic used by `forenseqhaplo` to classify each locus, decide whether it can be exported to `haplotypes.txt`, and flag cases that require manual review.
 
