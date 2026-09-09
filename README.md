@@ -89,8 +89,8 @@ Excel and logs
 - Combine replicate reports into a composite genetic profile.
 - Include population-frequency resources for Familias analyses.
 
-> \[NOTE\] `forenseqhaplo` is a data-processing and review-support tool.
-> It does **not** replace laboratory validation or expert
+> \[!NOTE\] `forenseqhaplo` is a data-processing and review-support
+> tool. It does **not** replace laboratory validation or expert
 > interpretation. Users are responsible for validating analysis
 > parameters, reviewing flagged loci, and approving final genotype and
 > haplotype calls.
@@ -238,7 +238,7 @@ result$output_parameters_xlsx
 
 ------------------------------------------------------------------------
 
-## 6. Input data and requeriments
+## 6. Input data and requirements
 
 ### ForenSeq reports
 
@@ -306,8 +306,8 @@ For each expected `Target SNP`:
     sequence has enough reads, the primary sequence is duplicated as a
     homozygous call and the locus is flagged for review.
 
-7.  Calls with insufficient read support (min_homozygote_reads) are
-    marked as `not_interpretable`.
+7.  Calls with insufficient read support (read count \<
+    min_homozygote_reads) are marked as `not_interpretable`.
 
 8.  A relevant third sequence is flagged for review when its
     third-to-first read ratio reaches `extra_signal_threshold`.
@@ -425,7 +425,7 @@ not match any sequence in the database, the cells will remain empty.
 
 Each sample generates one workbook named:
 
-### `review_<sample_id>.xlsx`
+#### `review_<sample_id>.xlsx`
 
 The workbook contains three sheets:
 
@@ -493,8 +493,8 @@ status of each file. It includes:
 - Processing status.
 - Error messages, when present.
 - Number of final calls.
-- Number of homozygous, heterozygous, no-call, not-interpretable, and
-  not-found loci.
+- Number of homozygous, heterozygous, no_call, not_interpretable, and
+  not_found loci.
 - Number of records requiring review.
 
 By default, an error in one sample does not stop processing of the
@@ -563,9 +563,8 @@ A custom database must contain these columns:
 | `Polymorphic_sites` | Positions corresponding to the polymorphic sites of the haplotype |
 | `Position_GRCh38` | Genomic position according to GRCh38 |
 
-The effective matching key is `TargetSNP + normalized Sequence`.
-Duplicated keys are not allowed because they make sequence matching
-ambiguous.
+The effective matching key is `TargetSNP + Sequence`. Duplicated keys
+are not allowed because they make sequence matching ambiguous.
 
 Validate a custom database before processing:
 
@@ -696,7 +695,9 @@ file.copy(
 The package distributes these resources but does not automatically
 select the appropriate population or frequency type for an analysis.
 That decision must be based on the validated analytical method, the
-study design, and the relevant population model. —
+study design, and the relevant population model.
+
+------------------------------------------------------------------------
 
 ## 14. Reproducibility and review
 
@@ -751,7 +752,7 @@ distinct research outputs.
 
 ### Associated scientific paper
 
-> **Expanding the forensic utility of the 94 Forenseq identity SNPs
+> **Expanding the forensic utility of the 94 ForenSeq identity SNPs
 > through sequence-based microhaplotypes and an automated analysis
 > workflow**
 
