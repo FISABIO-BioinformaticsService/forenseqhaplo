@@ -14,7 +14,6 @@
 
 <!-- badges: start -->
 
-[![R-CMD-check](https://github.com/FISABIO-BioinformaticsService/forenseqhaplo/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/FISABIO-BioinformaticsService/forenseqhaplo/actions/workflows/R-CMD-check.yaml)
 ![R](https://img.shields.io/badge/R-%E2%89%A5%204.1.0-276DC3?logo=r&logoColor=white)
 ![Version](https://img.shields.io/badge/version-1.0.0-2ea44f)
 [![License:
@@ -443,7 +442,7 @@ review:
 
 ``` text
 ForenSeq_sequence: Sequences from FRRs. 
-DB_sequence: Sequences stored in the package's internal database.
+DB_Sequence: Sequences stored in the package's internal database.
 ```
 
 This is especially useful when a selected sequence is not found in the
