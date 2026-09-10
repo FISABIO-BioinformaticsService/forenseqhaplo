@@ -591,11 +591,11 @@ DVI mode adds relationship information to the generated TXT output.
 The relationships Excel file must contain exactly one row per sample and
 these columns:
 
-| Column         | Description                                        |
-|----------------|----------------------------------------------------|
-| `family_id`    | Family or DVI identifier                           |
-| `relationship` | Relationship category (\[Son\], \[Grandson\]…)     |
-| `sample_id`    | Sample identifier matching the final TXT sample ID |
+| Column | Description |
+|----|----|
+| `family_id` | Family or DVI identifier |
+| `relationship` | Relationship category (\[Brother\], \[Sister\], \[Sibling\], \[Father\], \[Mother\]…) |
+| `sample_id` | Sample identifier matching the final TXT sample ID |
 
 Example:
 

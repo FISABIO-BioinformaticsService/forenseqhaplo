@@ -541,7 +541,7 @@ The relationships Excel file must contain exactly one row per sample and these c
 | Column | Description |
 | ------ | ----------- |
 | `family_id` | Family or DVI identifier |
-| `relationship` | Relationship category ([Son], [Grandson]...) |
+| `relationship` | Relationship category ([Brother], [Sister], [Sibling], [Father], [Mother]...) |
 | `sample_id` | Sample identifier matching the final TXT sample ID |
 
 Example:
