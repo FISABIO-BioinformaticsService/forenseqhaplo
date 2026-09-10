@@ -540,9 +540,9 @@ The relationships Excel file must contain exactly one row per sample and these c
 
 | Column | Description |
 | ------ | ----------- |
-| `sample_id` | Sample identifier matching the final TXT sample ID |
-| `relationship` | Relationship category ([Son], [Grandson]...) |
 | `family_id` | Family or DVI identifier |
+| `relationship` | Relationship category ([Son], [Grandson]...) |
+| `sample_id` | Sample identifier matching the final TXT sample ID |
 
 Example:
 
@@ -558,7 +558,7 @@ result <- process_forenseq_folder(
 In DVI mode, the TXT starts with:
 
 ```text
-sample_id    relationship    family_id    rs10495407    rs1294331    ...
+family_id    relationship    sample_id    rs10495407    rs1294331    ...
 ```
 
 ## 12. Combining replicate reports
